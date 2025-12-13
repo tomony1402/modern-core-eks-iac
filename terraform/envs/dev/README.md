@@ -20,3 +20,19 @@
 - `terraform apply` は本ディレクトリ配下で実行する
 - 本ディレクトリの state は dev 専用とする
 - dev 環境はコストを最小限に抑える構成とする
+
+
+## 現在の構成
+
+- VPC CIDR: 10.0.0.0/16
+- Availability Zone: ap-northeast-1a / ap-northeast-1c
+- public subnet: 外部公開（ALB 等）用
+- private subnet: EKS Node / Pod 配置用
+
+## 設計判断
+
+- dev 環境のため NAT Gateway は作成していない
+- private subnet はインターネットへの直接通信を持たない
+- `public_subnets` を指定したため、Internet Gateway は module 側で自動作成される
+- `terraform plan` により、想定どおりのリソースが作成されることを確認済み
+

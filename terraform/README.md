@@ -19,3 +19,8 @@ Terraform により Infrastructure as Code (IaC) として管理する。
 ## 構成方針（予定）
 
 
+## Terraform 構成方針
+
+- 環境ごとに `envs/` 配下で Terraform 定義を分離
+- module は Terraform Registry の公式・実績あるものを優先的に利用
+- dev 環境では最小構成を基本とし、段階的に拡張する

@@ -55,3 +55,12 @@ AWS EKS + IaC を用いたモダンな基盤構築を行うポートフォリオ
 - Helm によるサービスのデプロイ
 - GitHub Actions / HCP Terraform による CI/CD 構築
 
+
+## 現在の進捗
+
+- Terraform を用いた AWS 基盤構築を開始
+- Terraform Registry の公式 VPC module を利用して dev 用 VPC を定義
+- public / private subnet を分離した構成を採用
+- dev 環境のため NAT Gateway は作成せず、コストを最小化
+- `terraform init` / `terraform plan` により構成内容を確認済み
+
