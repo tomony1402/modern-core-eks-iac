@@ -1,23 +1,57 @@
 # modern-core-eks-iac
 
 オンプレミスで構築していたコアサービスをモデルに、
-AWS EKS + IaC を用いたモダンな基盤構築を行うポートフォリオ。
+AWS EKS + IaC を用いたモダンな基盤構築を行うポートフォリオプロジェクト。
 
-## リポジトリ初期化手順
+## 目的
 
-本リポジトリは、ローカル環境で以下の手順により初期化した。
+- オンプレミス環境で感じていた運用・拡張性の課題を整理する
+- AWS EKS を用いたモダンな基盤構成を IaC で再現可能に構築する
+- Git / CI/CD を前提とした運用フローを設計する
 
-```bash
-mkdir modern-core-eks-iac
-cd modern-core-eks-iac
+## 背景（オンプレミス環境の課題）
 
-git init
-git branch -m main
 
-vi README.md
+従来のオンプレミス環境では、CPUやメモリの増設は比較的容易である一方、
+ストレージ容量の拡張には物理的な制約があり、
+停止作業や設計変更を伴うケースが多かった。
 
-git add README.md
-git commit -m "init: add README"
+また、環境構築や構成変更に時間がかかり、
+リソース不足が顕在化してから対応するまでのリードタイムが長いという課題があった。
 
-git remote add origin https://github.com/kensho1402/modern-core-eks-iac.git
-git push -u origin main
+これらの課題を踏まえ、より柔軟で再現性の高い基盤構成を実現するため、
+クラウド環境（AWS）と IaC を前提とした構成を採用することとした。
+
+
+## リポジトリ構成（概要）
+
+- `README.md`  
+  - プロジェクト概要・背景・全体像
+- `docs/`  
+  - 各種設計・手順ドキュメント
+- `terraform/`  
+  - IaC（後続で追加予定）
+- `helm/`  
+  - Helm Chart（後続で追加予定）
+
+## セットアップ手順
+
+リポジトリの初期化および GitHub との連携手順は、以下にまとめている。
+
+- [Git リポジトリ初期化手順](docs/setup/git-setup.md)
+
+## ここまでに実施した内容
+
+- GitHub上に `modern-core-eks-iac` リポジトリを作成
+- ローカル環境で `git init` からリポジトリを初期化
+- `main` ブランチを採用
+- 初期化手順をドキュメント化
+- Terraform向けの `.gitignore` を追加
+- GitHub との接続方式を HTTPS から SSH に変更
+
+## 今後の予定
+
+- Terraform による VPC / EKS 基盤構築
+- Helm によるサービスのデプロイ
+- GitHub Actions / HCP Terraform による CI/CD 構築
+
