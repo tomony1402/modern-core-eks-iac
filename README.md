@@ -64,3 +64,14 @@ AWS EKS + IaC を用いたモダンな基盤構築を行うポートフォリオ
 - dev 環境のため NAT Gateway は作成せず、コストを最小化
 - `terraform init` / `terraform plan` により構成内容を確認済み
 
+
+## 本日の進捗
+
+- Git リポジトリ構成を整理し、ドキュメントと Terraform の責務を分離
+- Terraform Registry を参照し、公式 VPC モジュールを採用
+- 開発環境（dev）向けに VPC 基盤を設計・定義
+  - public / private subnet を分離
+  - Internet Gateway は module の挙動により自動作成
+  - dev 環境のため NAT Gateway は作成しない構成とした
+- terraform plan により、意図したリソース構成であることを確認
+- モジュールの挙動（IGW / Route Table / Subnet の関係）を README に言語化
